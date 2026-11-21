@@ -1,0 +1,17 @@
+usuario            (id_usuario PK, nombre_completo, correo_electronico UNIQUE,
+                    fecha_registro, fecha_nacimiento)
+tipo_actividad     (id_tipo PK, nombre UNIQUE, descripcion)
+ruta               (id_ruta PK, nombre, ubicacion, distancia_km, desnivel, tipo_superficie)
+evento             (id_evento PK, id_tipo FK, nombre_evento, fecha, hora_inicio,
+                    hora_cierre, ubicacion)
+sesion             (id_sesion PK, id_usuario FK, id_tipo FK, id_ruta FK NULL,
+                    fecha, hora_inicio, hora_finalizacion, es_interior)
+metrica            (id_sesion PK y FK, distancia_km, bpm_promedio, calorias)
+dispositivo        (id_dispositivo PK, id_usuario FK, tipo, marca, modelo, anio)
+sesion_dispositivo (id_sesion FK, id_dispositivo FK)                   PK = las dos
+inscripcion        (id_usuario FK, id_evento FK, dorsal, tiempo, posicion)
+                                                         PK = id_usuario + id_evento
+meta               (id_meta PK, id_usuario FK, id_evento FK NULL, descripcion,
+                    fecha_inicio, fecha_finalizacion, estado)
+valoracion_ruta    (id_usuario FK, id_ruta FK, calificacion, comentario, fecha)
+                                                         PK = id_usuario + id_ruta
